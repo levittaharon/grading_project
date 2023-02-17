@@ -27,6 +27,7 @@ class admin:
         con = sqlite3.connect("teachers.db")
         cur = con.cursor()
         cur.execute("INSERT INTO teachers VALUES (?,?,?,?)",(newteacher.name,newteacher.tid,newteacher.email,newteacher.password))
+        cur.execute("CREATE TABLE IF NOT EXISTS" +tid+ "(feedback,parentName)")
         con.commit()
         con.close()
 

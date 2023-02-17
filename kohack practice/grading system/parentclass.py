@@ -1,10 +1,15 @@
 from studentclass import student
 class parent(student):
-  def feedback(tid,feedback):
+  def __init__(self, name, sid, email, password,parentName):
+    self.parentName = parentName
+    self.name = name
+    self.sid = sid
+    self.email = email
+    self.password = password
+  def feedback(self,tid,feedback):
     con = sqlite3.connect("teachers.db")
     cur = con.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS parentFeedback(tid,feedback)")
-    cur.execute("INSERT into parentFeedback VALUES(?,?)",(tid,feedback))
+    cur.execute("INSERT INTO" + "a" +tid+ "VALUES(?,?)",(feedback,self.parentName))
     con.commit()
     con.close()
     

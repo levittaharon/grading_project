@@ -45,6 +45,12 @@ while True:
         email = input("what is your email")
         password = input("what is your password")
         theTeacher = teacher(name,tid, email, password)
+        con = sqlite3.connect("teachers.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM a"+tid)
+        print(cur.fetchall())
+        con.close()
+        
         theTeacher.findcids()
         #see what the teacher wants to do
         action = int(input("If you want to add an assignment type 1. If you want to add a grade type 2. To restart type anything else."))
